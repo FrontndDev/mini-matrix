@@ -30,5 +30,5 @@ export default defineConfig({
             }
         }
     },
-    base: '/app/matrix/v'
+    base: '/app/mini-matrix/v'
 })

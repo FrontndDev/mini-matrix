@@ -6,7 +6,7 @@ import {
 import Home from "@/views/Home/Home.vue";
 
 
-const baseUrl: string = '/app/matrix/v'
+const baseUrl: string = '/app/mini-matrix/v'
 
 const routes = [
     {
