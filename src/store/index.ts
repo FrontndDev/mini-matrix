@@ -44,7 +44,7 @@ export default createStore({
     },
     actions: {
         getListOfTypes({ commit }: { commit: Commit }) {
-            const category = 'dream-ton';
+            const category = 'mini-dream';
             const key = `/api/matrix/list-of-types/${category}`
             const data = API.getDataFromLS(key)
             if (data) commit('SET_LIST_OF_TYPES', data)
