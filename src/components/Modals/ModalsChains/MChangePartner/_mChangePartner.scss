@@ -1,0 +1,71 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.change-partner {
+  width: 720px;
+  border-radius: 16px;
+  background: $bg-base;
+
+  &__content {
+    @include flexbox(column);
+    border-bottom: 1px solid $border-base-light;
+  }
+
+  &__container {
+    @include flexbox(column, space-between, center);
+    width: 100%;
+    padding: 0 16px 16px;
+
+    & button {
+      margin: 24px 0;
+      width: 50%;
+    }
+  }
+
+  &__overflow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+    max-height: 364px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  &__block {
+    width: 144px;
+    height: fit-content;
+    border: 1px solid $border-base-bright;
+    border-radius: 16px;
+
+    &.active {
+      border: 1px solid $border-violet;
+      background: $bg-base-secondary;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .change-partner {
+    border-radius: 16px 16px 0 0;
+    width: 100%;
+
+    &__container {
+      & button {
+        width: calc(100% - 32px);
+        margin: 16px;
+      }
+    }
+
+    &__overflow {
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      justify-items: center;
+      gap: 16px 24px;
+      margin-bottom: 0;
+      padding: 24px;
+      width: 100%;
+      height: calc(80vh - 166px);
+    }
+  }
+}

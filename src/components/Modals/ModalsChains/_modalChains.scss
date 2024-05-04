@@ -1,0 +1,55 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.modal {
+  @include flex-center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5000;
+
+  &__overlay {
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    background: $bg-transparency-black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 140;
+  }
+
+  &__content {
+    @include flex-center;
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+    z-index: 150;
+  }
+}
+
+.modal-enter-active,
+.modal-leave-active {
+  backdrop-filter: blur(8px);
+  transition: all 0.5s ease;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  backdrop-filter: blur(0px);
+  opacity: 0;
+}
+
+@media (max-width: 992px) {
+  .modal {
+    align-items: end;
+
+    &__content {
+      align-items: end;
+      width: 100%;
+      max-height: 80vh;
+    }
+  }
+}

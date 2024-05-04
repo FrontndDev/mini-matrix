@@ -1,0 +1,70 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.pagination-matrix {
+  @include flex-center;
+  gap: 32px;
+  padding: 8px 24px;
+  width: 100%;
+  border-radius: 0 0 16px 16px;
+  border-top: 1px solid $border-base-light;
+  background: $bg-base;
+
+  &__arrow-left {
+    width: 16px;
+    height: auto;
+    cursor: pointer;
+
+    &.arrow-active path {
+      fill: $text-base-secondary;
+    }
+  }
+
+  &__arrow-right {
+    width: 16px;
+    height: auto;
+    transform: rotate(180deg);
+    cursor: pointer;
+
+    &.arrow-active path {
+      fill: $text-base-secondary;
+    }
+  }
+
+  &__container {
+    @include flex-center;
+    gap: 16px;
+  }
+
+  &__tab {
+    @include flex-center;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    @include get-font(12px, 500, 16px, $text-base-secondary);
+    transition: .25s all ease;
+    cursor: pointer;
+
+    &.active {
+      background: $bg-violet-light;
+      color: $text-primary-default;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .pagination-matrix {
+    gap: 24px;
+    padding: 8px 16px;
+    border-radius: 0 0;
+
+    &__container {
+      gap: 12px;
+    }
+
+    &__tab--mobile {
+      display: none;
+    }
+  }
+}

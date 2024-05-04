@@ -1,0 +1,40 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.my-checkbox {
+  padding: 1px;
+  width: 24px;
+  height: 14px;
+  border-radius: 8px;
+  position: relative;
+  transition: .25s all ease;
+  cursor: pointer;
+
+  &:not(.active) {
+    background: $bg-red;
+
+    & .my-checkbox__circle {
+      left: 1px;
+    }
+  }
+
+  &.active {
+    background: #47EB7E;
+
+    & .my-checkbox__circle {
+      left: calc(100% - 13px);
+    }
+  }
+
+  &__circle {
+    margin: auto 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #FEFEFE;
+    transition: .25s all ease;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+  }
+}

@@ -1,0 +1,52 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.cell-information-item {
+  @include flexbox(row, flex-start, center);
+  column-gap: 12px;
+
+  &.dark {
+    &:not(:last-child) {
+      border-bottom: 1px solid $border-base-dark-light;
+    }
+
+    & .cell-information-item {
+      &__value {
+        color: $text-base-on-color;
+      }
+    }
+  }
+
+  &.light {
+    &:not(:last-child) {
+      border-bottom: 1px solid $border-base-light;
+    }
+
+    & .cell-information-item {
+      &__value {
+        color: $text-base;
+      }
+    }
+  }
+
+  &__icon {
+    display: flex;
+  }
+
+  &__content {
+    @include flexbox(column);
+    row-gap: 4px;
+  }
+
+  &__title {
+    @include get-font(12px, 500, 16px, $text-base-light);
+  }
+
+  &__value {
+    @include get-font(12px, 500, 16px);
+
+    & > ::v-deep(span) {
+      color: $text-base-light;
+    }
+  }
+}

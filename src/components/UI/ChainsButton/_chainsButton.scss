@@ -1,0 +1,26 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.chain-button {
+  @include flex-center;
+  gap: 8px;
+  padding: 12px 16px;
+  height: 44px;
+  border-radius: 12px;
+  background: $bg-primary-default;
+  @include get-font(14px, 500, 140%, $text-base-on-color);
+
+  & path {
+    fill: $text-base-on-color;
+    width: 16px;
+    height: 16px;
+  }
+
+  &.w-fit-content {
+    width: fit-content;
+  }
+
+  &.w-100 {
+    width: 100%;
+  }
+}

@@ -1,0 +1,111 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.partner-cell {
+  @include flexbox(column, center, center);
+  row-gap: 8px;
+  width: 192px;
+  height: fit-content;
+  padding: 16px;
+  border-radius: 16px;
+  background: $bg-base;
+  transition: .25s all ease;
+  text-align: center;
+  position: relative;
+
+  &__avatar {
+    padding: 2px;
+    border-radius: 32px;
+    width: 160px;
+    height: 160px;
+    cursor: pointer;
+    position: relative;
+
+    & > img {
+      border-radius: 28px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    &.freeze {
+      border: 2px solid $border-blue;
+    }
+
+    &.profit {
+      border: 2px solid $border-green;
+    }
+
+    &.boost {
+      border: 2px solid $bg-violet;
+    }
+
+    &.infinity {
+      border: 2px solid $border-orange;
+    }
+  }
+
+  &__name {
+    @include get-font(14px, 500, 20px, $text-base);
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    cursor: pointer;
+
+    &_mt-8 {
+      margin-top: 8px;
+    }
+  }
+
+  &__id {
+    @include flex-center;
+    column-gap: 4px;
+    @include get-font(12px, 500, 16px, $text-base-light);
+    cursor: pointer;
+  }
+
+  &.small {
+    width: 144px;
+
+    .partner-cell__avatar {
+      border-radius: 20px;
+      width: 112.8px;
+      height: 112.8px;
+
+      & > img {
+        border-radius: 16px;
+      }
+    }
+  }
+
+  &.small .partner-cell__name {
+    font-size: 12px;
+  }
+
+  &:hover {
+    background: $bg-base-secondary;
+  }
+}
+
+@media (max-width: 992px) {
+  .partner-cell {
+    width: 144px;
+    padding: 12px;
+
+    &__avatar {
+      border-radius: 16px;
+      width: 120px;
+      height: 120px;
+
+      & > img {
+        border-radius: 13px;
+      }
+    }
+
+    &__name {
+      @include get-font(12px, 500, 130%, $text-base);
+    }
+  }
+}

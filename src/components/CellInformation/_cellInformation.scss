@@ -1,0 +1,70 @@
+@import '@/assets/scss/mixins';
+@import '@/assets/scss/variables';
+
+.cell-information {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  z-index: 1;
+
+  &.small {
+    & .cell-information__icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 0 16px;
+    }
+  }
+
+  &__body {
+    position: relative;
+  }
+
+  &__icon {
+    @include flex-center;
+    width: 40px;
+    height: 40px;
+    border-radius: 0 28px;
+    backdrop-filter: blur(8px);
+    background: $bg-transparency-black;
+
+    &:hover {
+      & + .cell-information__content {
+        scale: 1;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__content {
+    width: 200px;
+    scale: 0;
+    opacity: 0;
+    border-radius: 16px;
+    background: $bg-base-dark;
+    transition: .25s all ease;
+    position: absolute;
+    top: 44px;
+
+    &.right {
+      left: 0;
+    }
+
+    &.left {
+      right: 0;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .cell-information {
+    &__icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 0 12px;
+    }
+
+    &__content {
+      display: none;
+    }
+  }
+}

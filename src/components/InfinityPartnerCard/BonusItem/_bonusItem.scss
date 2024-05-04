@@ -1,0 +1,93 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.bonus-item {
+  @include flexbox(row, flex-start, center);
+  column-gap: 4px;
+  padding: 4px 8px 4px 4px;
+  max-width: 99%;
+  border-radius: 8px;
+  background: $bg-base-secondary;
+  @include get-font(12px, 500, 12px, $text-base-secondary);
+
+  &__icon {
+    flex-shrink: 0;
+    padding: 4px;
+  }
+
+  &.ton,
+  &.auto {
+    & .bonus-item__value {
+      width: 100%;
+    }
+  }
+
+  &.ton {
+    padding-right: 5px;
+  }
+
+  &.cashout {
+    max-width: 67px;
+  }
+
+  &.custom {
+    max-width: 55px;
+  }
+
+  &.boost {
+    column-gap: 0;
+
+    & .bonus-item__value {
+      padding: 2px 4px;
+      position: relative;
+
+      &.width-first,
+      &.width-second {
+        width: 46%;
+      }
+
+      &.width-third {
+        width: 31.3%;
+      }
+
+      &:not(:last-child) {
+        &:after {
+          content: '';
+          margin: auto;
+          width: 1px;
+          height: 8px;
+          background: $bg-base-bright;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: -2px;
+        }
+      }
+    }
+  }
+
+  &__values {
+    @include flexbox(row, flex-start, center, wrap);
+    gap: 2px;
+  }
+
+  &:not(.boost) {
+    & .bonus-item__value {
+      text-align: start;
+    }
+  }
+
+  &__value {
+    @include get-font(12px, 500, 12px, $text-base-secondary);
+    width: 31.8%;
+  }
+
+  & .width-first {
+    width: 48.4%;
+  }
+
+  & .width-second,
+  & .width-third {
+    width: 100%;
+  }
+}

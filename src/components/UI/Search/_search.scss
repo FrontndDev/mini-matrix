@@ -1,0 +1,33 @@
+@import '@/assets/scss/variables';
+@import '@/assets/scss/mixins';
+
+.search {
+  display: flex;
+
+  &__icon {
+    @include flex-center;
+    padding: 10px;
+    background: $bg-base-light;
+    border-radius: 8px;
+    transition: .25s all ease;
+    cursor: pointer;
+
+    &:hover {
+      background: $bg-base-bright;
+    }
+  }
+}
+
+.search-mobile {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .search-desktop {
+    display: none;
+  }
+
+  .search-mobile {
+    display: block;
+  }
+}

@@ -1,0 +1,43 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.add-partner-cell {
+  @include flexbox(column, center, center);
+  row-gap: 8px;
+  width: 192px;
+  padding: 16px;
+  position: relative;
+
+  &__plus {
+    @include flex-center;
+    padding: 4px;
+    width: 160px;
+    height: 160px;
+    border-radius: 28px;
+    background: $bg-base-light;
+    cursor: pointer;
+    position: relative;
+
+    & svg {
+      transform: rotate(45deg);
+    }
+
+    & path {
+      fill: #7B879D;
+    }
+  }
+
+  &__title {
+    @include get-font(14px, 500, 20px, $text-base);
+
+    &_mt-8 {
+      margin-top: 8px;
+    }
+  }
+
+  &__subtitle {
+    @include flex-center;
+    column-gap: 4px;
+    @include get-font(12px, 500, 16px, $text-base-light);
+  }
+}

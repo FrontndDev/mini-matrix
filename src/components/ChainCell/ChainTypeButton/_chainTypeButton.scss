@@ -1,0 +1,17 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.chain-type-button {
+  @include flex-center;
+  gap: 4px;
+  @include get-font(12px, 500, 130%, $text-link);
+
+  & svg {
+    width: 16px;
+    height: auto;
+  }
+}
+
+.arrow-rotate {
+  transform: rotate(180deg);
+}

@@ -1,0 +1,75 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.general-chains {
+  width: 720px;
+  border-radius: 16px;
+  background: $bg-base;
+
+  &__content {
+    @include flexbox(column);
+    border-bottom: 1px solid #EFF2F5;
+  }
+
+  &__container {
+    @include flexbox(column, space-between, center);
+    padding: 24px;
+    width: 100%;
+
+    & button {
+      width: 50%;
+    }
+  }
+
+  &__overflow {
+    @include flexbox(row, flex-start, flex-start, nowrap);
+    gap: 24px;
+    margin-bottom: 24px;
+    padding: 0 20px;
+    width: 720px;
+    height: 364px;
+    box-sizing: border-box;
+    overflow-x: auto;
+  }
+
+  &__block {
+    border: 1px solid #E0E5EB;
+    height: fit-content;
+    border-radius: 16px;
+    width: 144px;
+  }
+}
+
+@media (max-width: 992px) {
+  .general-chains {
+    border-radius: 16px 16px 0 0;
+    width: 100%;
+
+    &__container {
+      padding: 16px;
+      align-items: start;
+
+      & button {
+        width: 100%;
+      }
+    }
+
+    &__overflow {
+      @include flexbox(row, flex-start);
+      gap: 16px;
+      padding: 0;
+      width: 100%;
+      height: fit-content;
+      overflow-y: hidden;
+      overflow-x: auto;
+    }
+
+    &__block {
+      flex-shrink: 0;
+      width: 144px;
+      height: fit-content;
+      border: 1px solid #E0E5EB;
+      border-radius: 16px;
+    }
+  }
+}

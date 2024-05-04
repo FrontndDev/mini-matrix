@@ -1,0 +1,129 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.modal {
+    @include flex-center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5000;
+
+    &__overlay {
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(8px);
+        background: $bg-transparency-black;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 140;
+    }
+
+    &__content {
+        @include flex-center;
+        width: fit-content;
+        height: fit-content;
+        position: relative;
+        z-index: 150;
+    }
+}
+
+.modal-enter-active,
+.modal-leave-active {
+    transition: all 0.5s ease;
+    backdrop-filter: blur(8px);
+}
+
+.modal-enter-from,
+.modal-leave-to {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+}
+
+.modal-confirm-payment {
+    background: #FFF;
+    border-radius: 16px;
+    width: 560px;
+    height: fit-content;
+    position: relative;
+    z-index: 150;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        height: fit-content;
+    }
+
+    &__block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding: 0 16px;
+    }
+
+    &__text {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 150%;
+        text-align: center;
+
+        & svg {
+            transform: translateY(3.5px);
+            flex-shrink: 0;
+        }
+    }
+
+    &__money {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        color: $text-link;
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 32px;
+        font-weight: 400;
+        line-height: 150%;
+
+        &.failure {
+            color: $text-red;
+
+            & path {
+                fill: $text-red;
+            }
+        }
+    }
+
+    &__buttons {
+        width: 100%;
+        height: 77px;
+        padding: 16px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 992px) {
+    .modal {
+        align-items: flex-end;
+
+        &__content {
+            align-items: flex-end;
+            width: 100%;
+            max-height: 80vh;
+        }
+    }
+
+    .modal-confirm-payment {
+        background: #FFF;
+        border-radius: 16px 16px 0 0;
+        width: 100%;
+    }
+}

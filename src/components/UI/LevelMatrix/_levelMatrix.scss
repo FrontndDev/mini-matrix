@@ -1,0 +1,38 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.level-matrix {
+  @include flex-center;
+  gap: 2px;
+  @include get-font(12px, 700, 130%, $text-base-on-color);
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+
+  & > div {
+    @include flex-center;
+    gap: 2px;
+    padding: 2px 8px;
+    backdrop-filter: blur(8px);
+    background: $bg-transparency-black;
+  }
+
+  & > div:first-child {
+    border-radius: 8px 0 0 8px;
+  }
+
+  & > div:last-child {
+    border-radius: 0 8px 8px 0;
+  }
+
+  &.without-level {
+    & > div:first-child {
+      border-radius: 8px
+    }
+  }
+
+  & > div span {
+    color: $text-base-disable;
+  }
+}

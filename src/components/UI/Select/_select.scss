@@ -1,0 +1,121 @@
+@import '@/assets/scss/variables';
+@import '@/assets/scss/mixins';
+
+.select-matrix {
+  position: relative;
+
+  &__up {
+    @include flexbox(row, space-between, center);
+    column-gap: 12px;
+    padding: 16px;
+    width: 234px;
+    border-radius: 16px;
+    background: $bg-base-secondary;
+    @include get-font(16px, 500, 24px, $text-base);
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+
+    & > svg {
+      transition: .25s all ease;
+    }
+
+    &.opened {
+      & > svg {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+
+  &__text {
+    width: 174px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__down {
+    @include flexbox(column, flex-start, flex-start);
+    margin: auto;
+    padding: 4px;
+    max-height: 248px;
+    overflow-y: auto;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .08);
+    background: $bg-base-secondary;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
+
+  &__item {
+    padding: 12px;
+    width: 100%;
+    border-radius: 12px;
+    @include get-font(14px, 500, 20px, $text-base-secondary);
+    transition: .25s all ease;
+    cursor: pointer;
+
+    &:hover,
+    &.active {
+      color: $text-base;
+    }
+
+    &.active {
+      background: $bg-base;
+    }
+  }
+}
+
+@media (max-width: 1140px) {
+  .select-matrix {
+
+    &__up {
+      padding: 14px;
+      width: 200px;
+      border-radius: 12px;
+      background: $bg-base-secondary;
+      @include get-font(14px, 500, 140%, $text-base);
+
+      & svg {
+        flex-shrink: 0;
+      }
+    }
+
+    &__text {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .select-matrix {
+
+    &__up {
+      padding: 12px;
+      width: 230px;
+      border-radius: 8px;
+      background: $bg-base-secondary;
+      @include get-font(14px, 500, 140%, $text-base);
+    }
+
+    &__text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -ms-text-overflow: ellipsis;
+      -o-text-overflow: ellipsis;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .select-matrix {
+    width: 100%;
+
+    &__up {
+      width: 100%;
+    }
+  }
+}

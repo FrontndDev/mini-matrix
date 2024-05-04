@@ -1,0 +1,79 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.modal-confirm-payment {
+  background: #FFF;
+  border-radius: 16px;
+  width: 560px;
+  height: fit-content;
+  position: relative;
+  z-index: 150;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    height: fit-content;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 0 16px;
+  }
+
+  &__text {
+    width: 70%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 150%;
+    text-align: center;
+
+    & svg {
+      transform: translateY(2px);
+      margin-right: 4px;
+    }
+  }
+
+  &__money {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: $text-link;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 150%;
+
+    &.failure {
+      color: $text-red;
+
+      & path {
+        fill: $text-red;
+      }
+    }
+  }
+
+  &__buttons {
+    width: 100%;
+    height: 77px;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 992px) {
+  .modal-confirm-payment {
+    background: #FFF;
+    border-radius: 16px 16px 0 0;
+    width: 100%;
+  }
+}

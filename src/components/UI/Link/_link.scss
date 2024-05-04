@@ -1,0 +1,8 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.link {
+  @include get-font(12px, 500, 16px, $text-link);
+  cursor: pointer;
+  text-decoration: none;
+}

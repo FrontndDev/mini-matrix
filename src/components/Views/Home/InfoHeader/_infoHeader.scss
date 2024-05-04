@@ -1,0 +1,32 @@
+@import '@/assets/scss/variables';
+@import '@/assets/scss/mixins';
+
+.header-info {
+  @include flexbox(row, space-between, center);
+  padding: 16px;
+  width: 100%;
+  border-radius: 16px 16px 0 0;
+  background: $bg-base;
+  border-bottom: 4px solid #EFF2F5;
+
+  &__selects {
+    @include flex-center;
+    column-gap: 16px;
+  }
+}
+
+@media (max-width: 992px) {
+  .header-info {
+    @include flexbox(column, space-between, center);
+    border-radius: 0;
+    gap: 16px;
+
+    &__selects {
+      width: 100%;
+
+      & > div {
+        width: 100%;
+      }
+    }
+  }
+}

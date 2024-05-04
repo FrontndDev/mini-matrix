@@ -1,0 +1,28 @@
+@import '@/assets/scss/variables';
+@import '@/assets/scss/mixins';
+
+.boosters-cells {
+  padding: 16px;
+  width: 100%;
+  background: $bg-base;
+
+  &__header {
+    @include flexbox(row, flex-start, center);
+    column-gap: 16px;
+  }
+
+  &__container {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    grid-template-rows: max-content;
+    gap: 8px 56px;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .boosters-cells__container {
+    gap: 8px 24px;
+  }
+}

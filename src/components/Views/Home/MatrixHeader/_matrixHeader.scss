@@ -1,0 +1,52 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.matrix-header {
+  padding: 16px;
+  width: 100%;
+  border-radius: 16px 16px 0 0;
+  background: $bg-base;
+
+  &__buttons {
+    @include flexbox(row, flex-start, center);
+    column-gap: 8px;
+    height: 70px;
+
+    &_mt-16 {
+      margin-top: 16px;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .matrix-header {
+    border-radius: 0;
+    background: $bg-base;
+
+    &__buttons {
+      height: 54px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .matrix-header {
+    border-radius: 0;
+    background: $bg-base;
+
+    &__buttons {
+      width: 100%;
+      height: 69px;
+      overflow: scroll;
+
+      &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+
+      &_mt-16 {
+        margin-top: 8px;
+      }
+    }
+  }
+}

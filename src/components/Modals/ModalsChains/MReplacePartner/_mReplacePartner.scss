@@ -1,0 +1,129 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.replace-partner {
+  width: 720px;
+  border-radius: 16px;
+  background: $bg-base;
+
+  &__content {
+    @include flexbox(column);
+    border-bottom: 1px solid $border-base-light;
+  }
+
+  &__container {
+    @include flexbox(column, space-between, center);
+    position: relative;
+    width: 100%;
+    padding: 16px 0;
+
+    & .chain-button {
+      width: 60%;
+      margin: 24px 0;
+    }
+
+    &--line {
+      width: 100%;
+      height: 2px;
+      background: $bg-base;
+      position: absolute;
+      bottom: 75px;
+    }
+  }
+
+  &__overflow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    height: 408px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    margin-bottom: 16px;
+
+    &.four {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &.less-three {
+      @include flex-center;
+
+      & .replace-partner__cell {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &__cell {
+    @include flex-center;
+    padding: 16px;
+    width: 100%;
+    border-bottom: 1px solid $border-base-bright;
+    border-right: 1px solid $border-base-bright;
+  }
+
+  &__block {
+    @include flexbox(column, flex-start, center);
+    width: 144px;
+    height: fit-content;
+  }
+
+  &__level {
+    @include get-font(16px, 700, 150%, $text-base);
+  }
+
+  &__change-partner {
+    @include flexbox(column, flex-start, center);
+    @include get-font(12px, 500, 130%);
+
+    & > button {
+      color: $text-link;
+    }
+
+    & > span {
+      color: $text-base-light;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .replace-partner {
+    width: 100%;
+    border-radius: 16px 16px 0 0;
+
+    &__container {
+      & > button {
+        margin: 16px;
+        width: calc(100% - 32px);
+      }
+
+      &--line {
+        height: 2px;
+        background: $bg-base;
+        bottom: 76px;
+      }
+    }
+
+    &__overflow {
+      grid-template-columns: repeat(2, 1fr);
+      width: 100%;
+      height: calc(80vh - 164px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      position: relative;
+
+      &.four {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      &.less-three {
+        @include flex-center;
+
+        & .replace-partner__cell {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

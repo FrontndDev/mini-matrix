@@ -1,0 +1,60 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.time-activated-matrix {
+  @include flexbox(column, center, center);
+  gap: 16px;
+  width: 100%;
+  height: 356px;
+  padding: 16px;
+  border-radius: 0 0 16px 16px;
+  background: $bg-base;
+
+  &__text {
+    @include flexbox(column, flex-start, center);
+    gap: 8px;
+    @include get-font(14px, 500, 142%);
+
+    & > h3 {
+      @include get-font(20px, 500 !important, 160%, $text-base);
+    }
+  }
+
+  &__timer {
+    @include flexbox(row, flex-start, center);
+    gap: 12px;
+
+    &__number {
+      @include flex-center;
+      width: 80px;
+      height: 80px;
+      padding: 12px;
+      border-radius: 16px;
+      background: $bg-base-light;
+      @include get-font(32px, 700, 150%, $text-base-light);
+    }
+
+    &__dots {
+      @include flexbox(column, flex-start, center);
+      gap: 8px;
+
+      & div {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #191B2A;
+      }
+    }
+  }
+}
+
+.text__column {
+  @include flexbox(column, flex-start, center);
+  color: $text-base-secondary;
+  text-align: center;
+
+  & ::v-deep(a) {
+    font-size: 14px;
+    color: $text-link;
+  }
+}

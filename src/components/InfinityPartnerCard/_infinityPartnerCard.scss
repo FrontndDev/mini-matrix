@@ -1,0 +1,237 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.infinity-partner-card {
+  @include flexbox(column);
+  row-gap: 4px;
+  padding: 16px;
+
+  &:hover {
+    & .infinity-partner-card__partners {
+      background: $bg-base-secondary;
+      border-color: $bg-base-secondary;
+    }
+  }
+
+  &__partners,
+  &__awards {
+    width: 160px;
+    height: 50%;
+    border: 1px solid $border-base-bright;
+    border-radius: 16px;
+  }
+
+  &.m-matrix-partner {
+    height: 100%;
+    width: 160px;
+  }
+
+  &.m-matrix-partner .infinity-partner-card__partners {
+    @include flexbox(column, center, center);
+    margin-top: 16px;
+    padding: 12px;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__partners {
+    @include flexbox(column, center, center);
+    gap: 4px;
+    padding: 18px 12px;
+    height: 120px;
+    transition: .25s all ease;
+    cursor: pointer;
+
+    &-block {
+      @include flexbox(column, flex-start, center);
+    }
+
+    &-count {
+      @include get-font(28px, 700, 44px, $text-base-secondary);
+    }
+
+    &-title {
+      @include get-font(14px, 500, 24px, $text-base-secondary);
+    }
+
+    &-svg {
+      display: none;
+    }
+
+    &-link {
+      @include get-font(12px, 500, 16px, $text-link);
+    }
+  }
+
+  &__awards {
+    padding: 8px 16px 16px;
+
+    &-title {
+      @include get-font(12px, 500, 12px, $text-base-secondary);
+    }
+
+    &-bonuses {
+      @include flexbox(row, center, center, wrap);
+      gap: 4px;
+
+      &_mt-8 {
+        margin-top: 8px;
+      }
+    }
+  }
+
+  &__loading {
+    @include flexbox(column, center, center);
+    gap: 4px;
+    width: 160px;
+    height: 120px;
+    border-radius: 16px;
+    padding: 16px 12px;
+    background: $bg-base-secondary;
+
+    &-icon {
+      @include flex-center;
+      width: 40px;
+      height: 40px;
+      border-radius: 16px;
+      background: $bg-base-secondary;
+
+      & > svg {
+        animation: preloader-rotate 1s infinite linear;
+      }
+    }
+
+    &-title {
+      @include get-font(14px, 500, 20px, $text-base-on-color-secondary);
+    }
+
+    &.m-matrix-partner {
+      height: 100%;
+    }
+  }
+}
+
+@keyframes preloader-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 992px) {
+  .infinity-partner-card {
+    @include flexbox(column);
+    padding: 12px;
+
+    &__partners,
+    &__awards {
+      width: 120px;
+    }
+
+    &.m-matrix-partner {
+      width: 144px;
+    }
+
+    &.m-matrix-partner .infinity-partner-card__partners {
+      padding: 12px;
+      margin-top: 16px;
+    }
+
+    &__partners {
+      @include flexbox(column, center, center);
+      padding: 12px 8px;
+      height: 92px;
+
+      &-block {
+        & > div {
+          &:first-child {
+            @include flexbox(row, space-between, center);
+            gap: 8px;
+            height: 28px;
+
+            & > div {
+              line-height: 1;
+            }
+          }
+        }
+      }
+
+      &-title {
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      &-link {
+        font-size: 10px;
+      }
+
+      &-count {
+        @include get-font(18px, 700, 155%, $text-base-secondary);
+      }
+
+      &-svg {
+        display: block;
+        width: 16px;
+        height: auto;
+      }
+    }
+
+    &__awards {
+      padding: 8px 8px 12px;
+
+      &-bonuses {
+        @include flexbox(column, center, center, wrap);
+        gap: 4px;
+
+        & .bonus-item {
+          width: 100%;
+        }
+
+          &_mt-8 {
+          margin-top: 4px;
+        }
+      }
+    }
+
+    &__loading {
+      width: 120px;
+      height: 92px;
+
+      &-icon {
+        @include flex-center;
+        width: 32px;
+        height: 32px;
+      }
+
+      &-title {
+        @include get-font(10px, 500, 12px, $text-base-on-color-secondary);
+      }
+
+      &.m-matrix-partner {
+        height: 100%;
+        width: 144px;
+
+        & .infinity-partner-card__loading-icon {
+          width: 32px;
+          height: 32px;
+        }
+
+        & .infinity-partner-card__loading-title {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 757px) {
+  .infinity-partner-card {
+    &__partners {
+      gap: 0;
+      height: 64px;
+
+      &-title {
+        display: none;
+      }
+    }
+  }
+}

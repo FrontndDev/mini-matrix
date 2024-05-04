@@ -1,0 +1,78 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.modal-teleport {
+  @include flexbox(column, flex-start, center);
+  gap: 16px;
+  padding: 8px;
+  width: 480px;
+  background: $bg-base;
+  border-radius: 16px;
+
+  & ::v-deep(.matrix-modal-header) {
+    padding-top: 8px;
+    padding-bottom: 0;
+    height: 48px;
+  }
+
+  & ::v-deep(.matrix-modal-header__title) {
+    color: $text-base;
+  }
+
+  & ::v-deep(.small-cell__name) {
+    font-size: 14px;
+  }
+  & ::v-deep(.small-cell) {
+    gap: 8px;
+  }
+
+  &__info {
+    @include flexbox(column, center, center);
+    gap: 4px;
+    width: 100%;
+  }
+
+  &__text {
+    @include get-font(14px, 500, 140%);
+    color: $text-base-secondary;
+    text-align: center;
+  }
+
+  &__btn {
+    @include flex-center;
+    gap: 8px;
+    @include get-font(14px, 500, 140%, $text-link);
+  }
+
+  &__block {
+    padding: 0 16px;
+    width: 176px;
+  }
+
+  &__buttons {
+    width: 100%;
+    height: 77px;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+
+.rotate-img {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 992px) {
+  .modal-teleport {
+    gap: 12px;
+    padding: 0 8px 8px;
+    width: 100%;
+    border-radius: 16px 16px 0 0;
+
+    &__head {
+      padding: 12px;
+    }
+  }
+}

@@ -1,0 +1,231 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.d-button {
+  display: block;
+  padding: 8px 16px;
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid $border-base-dark;
+  transition: .25s all ease;
+  cursor: pointer;
+  position: relative;
+
+  &__name {
+    @include get-font(22px, 700, 36px, $text-base-secondary);
+    text-align: center;
+    transition: .25s all ease;
+  }
+
+  &__price {
+    @include flex-center;
+    column-gap: 4px;
+    @include get-font(12px, 500, 16px, $text-base-light);
+    transition: .25s all ease;
+
+    & path {
+      fill: $text-base-light;
+      transition: .25s all ease;
+    }
+  }
+
+  &__time {
+    @include flex-center;
+    gap: 4px;
+    @include get-font(12px, 500, 16px, $text-base-light);
+    transition: .25s all ease;
+  }
+
+  &.active {
+    background: $bg-base-dark-secondary;
+
+    & .d-button__name {
+      color: $text-base-on-color;
+    }
+  }
+
+  &.disabled {
+    border: 1px solid $border-base-contrast;
+
+    & * {
+      transition: .25s all ease;
+    }
+
+    & .d-button {
+      &__name,
+      &__price {
+        color: $text-base-disable;
+      }
+
+      &__price path {
+        fill: $text-base-disable;
+      }
+    }
+
+    &:hover,
+    &:active {
+      & .d-button {
+        &__name {
+          color: $text-base-light;
+        }
+
+        &__price {
+          color: $text-base-secondary;
+        }
+
+        &__price path {
+          fill: $text-base-secondary;
+        }
+      }
+    }
+
+    &:active {
+      & .d-button__name {
+        color: $text-base-secondary;
+      }
+    }
+  }
+
+  &:not(.active) {
+    &.pending {
+      border: 1px solid $border-orange;
+      animation: pending 2s linear infinite;
+
+      & * {
+        transition: .25s all ease;
+      }
+
+      &:hover,
+      &:active {
+        & .d-button {
+          background: $bg-red-light;
+
+          &__name {
+            color: $text-base-secondary;
+          }
+
+          &__time {
+            color: $text-base-light;
+          }
+        }
+      }
+
+      &:active {
+        & .d-button {
+          &__name,
+          &__time {
+            color: $text-base;
+          }
+        }
+      }
+    }
+
+    &.time {
+      border: 1px solid $border-red;
+      animation: time 2s linear infinite;
+
+      & * {
+        transition: .25s all ease;
+      }
+
+      &:hover,
+      &:active {
+        & .d-button {
+          background: $bg-red-light;
+
+          &__name {
+            color: $text-base-secondary;
+          }
+
+          &__time {
+            color: $text-base-light;
+          }
+        }
+      }
+
+      &:active {
+        & .d-button {
+          &__name,
+          &__time {
+            color: $text-base;
+          }
+        }
+      }
+    }
+  }
+  &:not(.active, .disabled) {
+    &:hover {
+      & .d-button {
+        &__name,
+        &__price {
+          color: $text-base;
+        }
+
+        &__price path {
+          fill: $text-base-secondary;
+        }
+      }
+    }
+  }
+}
+
+@keyframes time {
+  50% {
+    background: $bg-base;
+  }
+  51% {
+    background: $bg-red-light;
+  }
+  100% {
+    background: $bg-red-light;
+  }
+}
+
+@keyframes pending {
+  50% {
+    background: $bg-base;
+  }
+  51% {
+    background: $bg-orange-light;
+  }
+  100% {
+    background: $bg-orange-light;
+  }
+}
+
+@media (max-width: 992px) {
+  .d-button {
+    padding: 8px 8px;
+    border-radius: 12px;
+
+    &__name {
+      @include get-font(16px, 700, 150%, $text-base-secondary);
+    }
+
+    &__price {
+      column-gap: 2px;
+      @include get-font(10px, 500, 120%, $text-base-light);
+
+      & > svg {
+        width: 12px;
+        height: auto;
+      }
+    }
+
+    &__time {
+      @include get-font(10px, 500, 120%, $text-base-light);
+      gap: 2px;
+
+      & > svg {
+        width: 12px;
+        height: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .d-button {
+    min-width: 56px;
+  }
+}

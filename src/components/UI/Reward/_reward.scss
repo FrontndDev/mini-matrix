@@ -1,0 +1,48 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.reward {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin: 0 auto;
+  width: fit-content;
+
+  @include get-font(12px, 500);
+
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+
+  &__value,
+  &__car {
+    @include flex-center;
+    gap: 6px;
+    padding: 2px 6px;
+    backdrop-filter: blur(8px);
+    background: $bg-transparency-black;
+    color: $text-base-on-color;
+  }
+
+  &__value {
+    border-radius: 16px 0 0 16px;
+  }
+
+  &__car {
+    border-radius: 0 16px 16px 0;
+  }
+
+  &.include-car {
+    @include flex-center;
+  }
+
+  &.include-car div:first-child {
+    border-radius: 16px;
+    //padding: 2px 8px 2px 2px;
+  }
+
+  //&.include-car div:last-child {
+  //  display: none;
+  //}
+}

@@ -1,0 +1,17 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.activate-button {
+  @include flex-center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: $bg-primary-default;
+  @include get-font(14px, 500, 140%, $text-base-on-color);
+
+  & path {
+    fill: #fff;
+    width: 16px;
+    height: 16px;
+  }
+}

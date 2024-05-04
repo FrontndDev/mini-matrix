@@ -1,0 +1,39 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.preloader {
+  @include flexbox(column, center, center);
+  row-gap: 8px;
+  width: 100%;
+  text-align: center;
+
+  &__icon {
+    @include flex-center;
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: $bg-base-secondary;
+
+    & > svg {
+      animation: preloader-rotate 2s infinite linear;
+    }
+  }
+
+  &__title {
+    @include get-font(20px, 500, 32px, $text-base);
+
+    &_mt-8 {
+      margin-top: 8px;
+    }
+  }
+
+  &__subtitle {
+    @include get-font(12px, 500, 16px, $text-base-light);
+  }
+}
+
+@keyframes preloader-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}

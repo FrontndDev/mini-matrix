@@ -1,0 +1,93 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.small-cell {
+  @include flexbox(column, flex-start, center);
+  gap: 12px;
+  margin: 0 auto;
+  padding: 12px;
+  width: 142px;
+  cursor: pointer;
+  position: relative;
+
+  &__avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 16px;
+    background: lightgray 50% / cover no-repeat;
+    position: relative;
+
+    & > div:first-child {
+      border: 2px solid $border-base;
+      border-radius: 16px;
+
+      & img {
+        border-radius: 16px;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &.chains-boost {
+      border: 2px solid $border-violet;
+
+      & > div:first-child {
+        border-radius: 16px;
+        border: 2px solid $border-base;
+      }
+
+      & img {
+        border: 2px solid $border-base;
+      }
+    }
+
+    &.teleport {
+      border: 2px solid $border-orange;
+
+      & img {
+        border: 2px solid $border-base;
+      }
+    }
+
+    &.profit {
+      border: 2px solid $border-green;
+    }
+
+    &.time {
+      border: 2px solid $border-red;
+    }
+  }
+
+  &__info {
+    @include flexbox(column, center, center);
+    gap: 8px;
+    width: 100%;
+  }
+
+  &__name {
+    @include get-font(12px, 500, 130%, $text-base);
+    text-align: center;
+  }
+
+  &__id {
+    @include flex-center;
+    gap: 4px;
+    @include get-font(12px, 500, 130%, $text-base-light);
+  }
+
+  &.boost .partner-type, {
+    display: none;
+  }
+
+  &.chains-partner .partner-type,
+  &.chains-partner .cell-type {
+    display: none;
+  }
+
+  &.teleport .partner-type {
+    display: none;
+  }
+}
+
+
+

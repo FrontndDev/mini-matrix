@@ -1,0 +1,121 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.partner-type {
+  @include flex-center;
+  flex-direction: row;
+  column-gap: 16px;
+  cursor: pointer;
+
+  &__circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 8px;
+
+    & > span {
+      color: $text-base-on-color;
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 12px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+    }
+
+    &.freeze {
+      border: 1px solid $bg-blue;
+    }
+
+    &.profit {
+      border: 1px solid $bg-green;
+    }
+
+    &.fill-blue {
+      background: $bg-blue;
+    }
+
+    &.fill-orange {
+      background: $bg-orange;
+    }
+
+    &.fill-green {
+      background: $bg-green;
+    }
+
+    &.dashed-red {
+      position: relative;
+      width: 16px;
+      height: 16px;
+      border: 1px dashed $border-red !important;
+      background: transparent;
+
+      &:after {
+        content: '';
+        display: block;
+        width: 12px;
+        height: 12px;
+        background: $border-red;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.dashed-brown {
+      position: relative;
+      width: 16px;
+      height: 16px;
+      border: 1px dashed #A2855E !important;
+      background: transparent;
+
+      &:after {
+        content: '';
+        display: block;
+        width: 12px;
+        height: 12px;
+        background: #A2855E;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.dashed-mint {
+      position: relative;
+      width: 16px;
+      height: 16px;
+      border: 1px dashed #00C7BD !important;
+      background: transparent;
+
+      &:after {
+        content: '';
+        display: block;
+        width: 12px;
+        height: 12px;
+        background: #00C7BD;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  &.boost {
+    flex-direction: row;
+    column-gap: 4px;
+    @include get-font(12px, 500, 16px, $text-violet);
+  }
+
+  &.chains-boost {
+    column-gap: 4px;
+    @include get-font(12px, 500, 16px, $text-violet);
+  }
+}

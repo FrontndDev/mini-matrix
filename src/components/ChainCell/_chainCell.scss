@@ -1,0 +1,79 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.chain-cell {
+  @include flexbox(column);
+  gap: 4px;
+  margin: 0 auto;
+  padding: 12px;
+  width: 153px;
+  position: relative;
+
+  &__avatar {
+    width: 129px;
+    height: 129px;
+    border-radius: 16px;
+    background: lightgray 50% / cover no-repeat;
+    position: relative;
+    cursor: pointer;
+
+    & > div {
+      border: 2px solid $border-base;
+      border-radius: 16px;
+
+      & > img {
+        border-radius: 16px;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &.teleport {
+    cursor: pointer;
+  }
+
+  &__info {
+    @include flexbox(column, flex-start, center);
+    width: 100%;
+  }
+
+  &__level {
+    @include flex-center;
+    gap: 12px;
+    @include get-font(16px, 700, 150%);
+
+    & svg {
+      width: 16px;
+      height: 16px;
+      transform: rotate(180deg);
+    }
+
+    & span:first-child {
+      color: $text-base-light;
+    }
+
+    & span:last-child {
+      color: $text-base-secondary;
+    }
+  }
+
+  &__cost {
+    @include flex-center;
+    gap: 4px;
+    @include get-font(18px, 500, 155%, $text-green);
+
+    & svg {
+      width: 20px;
+      height: auto;
+    }
+  }
+
+  &.teleport .chain-cell__avatar {
+    border: 2px solid $border-orange;
+
+    & img {
+      border: 2px solid $border-base;
+    }
+  }
+}

@@ -1,0 +1,143 @@
+@import '@/assets/scss/variables';
+@import '@/assets/scss/mixins';
+
+.tab-matrix {
+  @include flex-center;
+  column-gap: 8px;
+  text-align: center;
+  transition: .25s all ease;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+
+  &:before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    position: absolute;
+    top: 7px;
+    right: 10px;
+  }
+
+  &.big {
+    padding: 12px 16px;
+    width: 152px;
+    border-radius: 12px;
+    @include get-font(16px, 500, 24px, $text-base-secondary);
+
+    &:hover,
+    &.active {
+      color: $text-base;
+    }
+
+    &.active {
+      background: $bg-base;
+      transition: .25s all ease;
+    }
+
+    &.indicator {
+      &-green {
+        &:before {
+          background: $bg-green;
+        }
+      }
+
+      &-orange {
+        &:before {
+          background: $bg-red;
+        }
+      }
+    }
+  }
+
+  &.little {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: $bg-base-light;
+    @include get-font(14px, 500, 20px, $text-base-secondary);
+
+    &:hover {
+      background: $bg-base-bright;
+    }
+
+    &.active {
+      background: $bg-base-deep;
+      color: $text-base-on-color;
+    }
+  }
+
+  &.expose-modal {
+    padding: 8px 12px;
+    width: 172px;
+    border-radius: 8px;
+    @include get-font(14px, 500, 140%, $text-base-secondary);
+
+    &:hover,
+    &.active {
+      color: $text-base;
+    }
+
+    &.active {
+      background: $bg-base;
+      transition: .25s all ease;
+    }
+
+    &.indicator {
+      position: relative;
+
+      &:before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: $bg-green;
+        position: absolute;
+        top: 7px;
+        right: 10px;
+      }
+    }
+  }
+
+  & ::v-deep(.my-tooltip) {
+    top: calc(-100% - 15px);
+    bottom: calc(100% + 15px);
+    left: calc(70% + 4px);
+  }
+}
+
+
+@media (max-width: 1140px) {
+  .tab-matrix {
+
+    &.big {
+      padding: 10px 12px;
+      width: 140px;
+      @include get-font(15px, 500, 20px, $text-base-secondary);
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .tab-matrix {
+
+    &.big {
+      padding: 8px 12px;
+      width: 100%;
+      border-radius: 8px;
+      @include get-font(14px, 500, 140%, $text-base-secondary);
+
+      &.indicator {
+
+        &:before {
+          top: 7px;
+          right: 10px;
+        }
+      }
+    }
+
+    &.expose-modal {
+      width: 100%;
+    }
+  }
+}

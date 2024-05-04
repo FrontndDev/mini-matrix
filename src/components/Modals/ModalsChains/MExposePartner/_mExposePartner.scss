@@ -1,0 +1,174 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.expose-partner {
+  width: 720px;
+  border-radius: 16px;
+  background: $bg-base;
+
+  &.w-fit-content {
+    width: fit-content;
+  }
+
+  &__content {
+    @include flexbox(column);
+    border-bottom: 1px solid $border-base-light;
+  }
+
+  &__container {
+    @include flexbox(column, space-between, center);
+    gap: 8px;
+    width: 100%;
+    position: relative;
+    padding: 0 16px 16px;
+  }
+
+  &__cell {
+    @include flex-center;
+    width: 100%;
+  }
+
+  &__block {
+    @include flexbox(column, flex-start, center);
+    width: 144px;
+    height: fit-content;
+  }
+
+  &__info {
+    @include flexbox(column, flex-start, center);
+    gap: 16px;
+    width: 100%;
+
+    &-text {
+      @include flexbox(column, center, center);
+      row-gap: 8px;
+    }
+
+    &-title {
+      @include get-font(16px, 700, 150%);
+    }
+
+    &-subtitle {
+      @include get-font(14px, 500, 20px, $text-base-secondary)
+    }
+
+    & button {
+      margin: 0 0 24px;
+      width: 50%;
+    }
+  }
+
+  &__choice {
+    @include flexbox(column, flex-start, center);
+    gap: 24px;
+    width: 100%;
+  }
+
+  &__tabs {
+    width: fit-content;
+  }
+
+  &__reward {
+    @include flexbox(column, flex-start, center);
+    gap: 8px;
+    padding: 0 16px;
+    width: 100%;
+  }
+
+  &__ton {
+    @include flex-center;
+    gap: 6px;
+    @include get-font(32px, 400, 150%, $text-green);
+
+    & svg {
+      width: 32px;
+      height: auto;
+    }
+  }
+
+  &__bonus {
+    @include flexbox(row);
+    gap: 8px;
+    width: 360px;
+
+    &.without-lb {
+      width: fit-content;
+    }
+  }
+
+  &__wait-list {
+    @include flexbox(row, flex-start, flex-start);
+    gap: 8px;
+    padding: 16px 20px 16px 12px;
+    width: 360px;
+    border-radius: 16px;
+    background: $bg-base-secondary;
+    @include get-font(12px, 500, 130%, $text-base-secondary);
+
+    & svg {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+    }
+
+    & p {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .expose-partner {
+    border-radius: 16px 16px 0 0;
+    width: 100%;
+
+    &__container {
+      gap: 6px;
+    }
+
+    &__info {
+      gap: 12px;
+
+      &-title {
+        @include get-font(16px, 700, 150%);
+      }
+
+      & button {
+        width: calc(100% - 32px);
+        margin: 0 0 16px;
+      }
+    }
+
+    &__choice {
+      @include flexbox(column, center, center);
+      gap: 16px;
+      width: 100%;
+    }
+
+    &__tabs {
+      width: calc(100% - 32px);
+    }
+
+    &__reward {
+      @include flexbox(column, center, center);
+      gap: 8px;
+      width: 100%;
+      padding: 0 16px;
+    }
+
+    &__ton {
+      gap: 6px;
+    }
+
+    &__bonus {
+      @include flexbox(column);
+      width: 180px;
+    }
+
+    &__wait-list {
+      width: calc(100% - 32px);
+      border-radius: 16px;
+      margin: 0 16px;
+    }
+  }
+}

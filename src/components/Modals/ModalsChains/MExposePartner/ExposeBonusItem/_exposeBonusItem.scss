@@ -1,0 +1,35 @@
+@import "@/assets/scss/variables";
+@import "@/assets/scss/mixins";
+
+.expose-bonus {
+  @include flexbox(row, space-between, center);
+  gap: 8px;
+  padding: 8px 10px;
+  width: 100%;
+  border-radius: 16px;
+  background: $bg-base-secondary;
+  @include get-font(10px, 500, 120%);
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__car {
+    @include flexbox(row, center);
+    width: 100%;
+  }
+
+  &__boost {
+    @include flex-center;
+    width: 100%;
+
+    & span {
+      padding: 0 4px;
+    }
+
+    & span:not(:last-child) {
+      border-right: 1px solid $border-base-bright;
+    }
+  }
+}
