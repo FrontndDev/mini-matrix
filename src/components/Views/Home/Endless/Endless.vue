@@ -122,7 +122,8 @@ watch(() => thirdCeil.value?.queueId, async () => {
   if (!thirdCeil.value?.queueId && !partnersPendingIsLoading.value) {
     partnersPendingIsLoading.value = true
     store.dispatch('partners/getPendingPartners', { isPartnerMatrix: true })
-    await store.dispatch('partners/getNewPendingPartners', { filter: store.state.partners.levelID })
+    store.dispatch('partners/getNewPendingPartners', { filter: store.state.partners.levelID })
+    await store.dispatch('partners/getExposedPartners', { filter: store.state.partners.levelID })
     partnersPendingIsLoading.value = false
   }
 })
