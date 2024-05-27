@@ -192,7 +192,9 @@ const exposePartner = async () => {
     }
 
     removePartnerFromList(store.state.partners.partnersPending)
-    store.dispatch('partners/getPendingPartners', { isPartnerMatrix: false })
+    if (partnerPos.value.pos !== 3) {
+      store.dispatch('partners/getPendingPartners', { isPartnerMatrix: false })
+    }
   }
 }
 </script>

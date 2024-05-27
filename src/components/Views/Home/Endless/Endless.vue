@@ -28,7 +28,9 @@ import { useStore } from "vuex";
 import {
   computed,
   Ref,
-  ComputedRef
+  ComputedRef,
+  watch,
+  ref
 } from "vue";
 import {
   Ceil,
@@ -40,6 +42,8 @@ import { IPosition } from "@/interfaces/partners.interface.ts";
 const emit = defineEmits(['open-m-infinity-cell', 'open-m-add-partner', 'set-position-for-partner'])
 
 const store = useStore()
+
+const partnersPendingIsLoading = ref(false)
 
 const onlyInfinityCell: ComputedRef<boolean> = computed(() => store.getters.onlyInfinityCell)
 
@@ -113,6 +117,15 @@ const openMAddPartner = (pos: IPosition) => {
     emit('set-position-for-partner', pos)
   }
 }
+
+watch(() => thirdCeil.value?.queueId, async () => {
+  if (!thirdCeil.value?.queueId && !partnersPendingIsLoading.value) {
+    partnersPendingIsLoading.value = true
+    store.dispatch('partners/getPendingPartners', { isPartnerMatrix: true })
+    await store.dispatch('partners/getNewPendingPartners', { filter: store.state.partners.levelID })
+    partnersPendingIsLoading.value = false
+  }
+})
 </script>
 
 <style scoped lang="scss">
