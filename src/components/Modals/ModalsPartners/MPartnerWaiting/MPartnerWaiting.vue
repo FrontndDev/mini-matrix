@@ -147,7 +147,7 @@ const removePartnerFromList = (partners: IPartners) => {
 
 const addPartnersToList = (partner: Matrix) => {
   const partners: IPartners = store.state.partners.partnersExposed
-  const presenceOfPartner = partners.list.find((exposedPartner: Matrix) => exposedPartner.uuid === partner.uuid)
+  const presenceOfPartner = partners.list.find((exposedPartner: Matrix) => exposedPartner.uuid === partner?.uuid)
 
   if (!presenceOfPartner) {
     partners.list.push(partner)

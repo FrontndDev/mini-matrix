@@ -223,6 +223,12 @@ const loadMatrix = () => {
     }, 3000);
   } else if (!matrixIsInQueueForPublication.value && interval.value) {
     clearInterval(interval.value);
+    store.dispatch('partners/getPendingPartners', {
+      isPartnerMatrix: true,
+      matrixUUID: route.query.uuid,
+    })
+    store.dispatch('partners/getPendingPartners', { isPartnerMatrix: false })
+    store.dispatch('partners/getNewPendingPartners', { filter: store.state.partners.levelID })
   }
 }
 
