@@ -227,7 +227,7 @@ const loadMatrix = () => {
       isPartnerMatrix: true,
       matrixUUID: route.query.uuid,
     })
-    store.dispatch('partners/getPendingPartners', { isPartnerMatrix: false })
+    // store.dispatch('partners/getPendingPartners', { isPartnerMatrix: false })
     store.dispatch('partners/getNewPendingPartners', { filter: store.state.partners.levelID })
   }
 }
