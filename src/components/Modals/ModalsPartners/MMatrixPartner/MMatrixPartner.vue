@@ -181,7 +181,7 @@ const isDreamTon9: ComputedRef<boolean> = computed(() => matrixById.value.matrix
 
 const matrixById: ComputedRef<IMatrix> = computed(() => store.state.matrixById)
 
-const partnersCountOfPartner: ComputedRef<number> = computed(() => store.state.partners.partnersPendingSecond.totalCount)
+// const partnersCountOfPartner: ComputedRef<number> = computed(() => store.state.partners.partnersPendingSecond.totalCount)
 const partnersCount: ComputedRef<number> = computed(() => store.state.partners.partnersPending.totalCount)
 const infinityPartnersCount: ComputedRef<number> = computed(() => store.state.matrixById.countInInfinity)
 
@@ -229,9 +229,11 @@ const loadMatrix = () => {
     //   matrixUUID: route.query.uuid,
     // })
 
-    store.dispatch('partners/getPendingPartners', {
-      matrixUUID: route.query?.uuid,
-    })
+    setTimeout(() => {
+      store.dispatch('partners/getPendingPartners', {
+        matrixUUID: route.query?.uuid,
+      })
+    }, 500)
     // store.dispatch('partners/getPendingPartners', { isPartnerMatrix: false })
     // store.dispatch('partners/getNewPendingPartners', { filter: store.state.partners.levelID })
   }
@@ -305,9 +307,9 @@ const openMInfinityCell = () => {
   emit('open-m-infinity-cell')
 }
 
-const openMPartnerWaiting = () => {
-  emit('open-partner-waiting', 'view')
-}
+// const openMPartnerWaiting = () => {
+//   emit('open-partner-waiting', 'view')
+// }
 
 const openMAddPartner = (pos: IPosition) => {
   const ceil: Ceil = ceils.value[String(pos.pos)]
