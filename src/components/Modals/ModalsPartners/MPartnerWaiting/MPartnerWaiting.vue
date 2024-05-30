@@ -179,10 +179,10 @@ const exposePartner = async () => {
     if (route.query.uuid) {
       removePartnerFromList(store.state.partners.partnersPendingSecond)
       store.dispatch('getMatrixByUUID', route.query.uuid)
-      store.dispatch('partners/getPendingPartners', {
-        isPartnerMatrix: true,
-        matrixUUID: route.query.uuid,
-      })
+      // store.dispatch('partners/getPendingPartners', {
+      //   isPartnerMatrix: true,
+      //   matrixUUID: route.query.uuid,
+      // })
     } else if (!partnerMatrix && myMatrix) {
       store.dispatch('getMatrixByType', store.state.selectedType.type)
 

@@ -130,11 +130,11 @@ const store = useStore()
 
 const selectedTypeTitle: ComputedRef<string> = computed(() =>
     store.state.listOfTypes?.types
-        .find((type: Type) => 'type' in props.cell && props.cell.type === type.type)?.title
+        .find((type: Type) => 'type' in props.cell && props.cell?.type === type.type)?.title
 )
 
 const matrixTypeIsDreamTon9: ComputedRef<boolean> = computed(() =>
-    'type' in props.cell && props.cell.type === 'dream-ton_9'
+    'type' in props.cell && props.cell?.type === 'dream-ton_9'
 )
 
 const time = computed(() => {

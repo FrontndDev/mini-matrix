@@ -106,7 +106,7 @@
           <div
               class="modal-matrix-partner__endless"
               :class="{ 'with-line': infinityPartnersCount && partnersCountOfPartner }"
-              v-if="infinityPartnersCount || partnersCountOfPartner"
+              v-if="infinityPartnersCount || partnersCountOfPartner > 0"
           >
             <CountOfPartners
                 type="modal"
@@ -119,7 +119,7 @@
                 type="modal"
                 title="В ожидании"
                 :partners-count="partnersCountOfPartner"
-                v-if="partnersCountOfPartner"
+                v-if="partnersCountOfPartner > 0"
                 @open-modal="openMPartnerWaiting"
             />
           </div>
@@ -223,12 +223,16 @@ const loadMatrix = () => {
     }, 3000);
   } else if (!matrixIsInQueueForPublication.value && interval.value) {
     clearInterval(interval.value);
+    // store.dispatch('partners/getPendingPartners', {
+    //   isPartnerMatrix: true,
+    //   matrixUUID: route.query.uuid,
+    // })
+
     store.dispatch('partners/getPendingPartners', {
-      isPartnerMatrix: true,
-      matrixUUID: route.query.uuid,
+      matrixUUID: route.query?.uuid,
     })
     // store.dispatch('partners/getPendingPartners', { isPartnerMatrix: false })
-    store.dispatch('partners/getNewPendingPartners', { filter: store.state.partners.levelID })
+    // store.dispatch('partners/getNewPendingPartners', { filter: store.state.partners.levelID })
   }
 }
 
