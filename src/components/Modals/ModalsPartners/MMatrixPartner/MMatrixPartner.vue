@@ -105,9 +105,10 @@
 
           <div
               class="modal-matrix-partner__endless"
-              :class="{ 'with-line': infinityPartnersCount && partnersCountOfPartner }"
-              v-if="infinityPartnersCount || partnersCountOfPartner > 0"
+              v-if="infinityPartnersCount"
           >
+<!--            v-if="infinityPartnersCount || partnersCountOfPartner > 0"-->
+<!--            :class="{ 'with-line': infinityPartnersCount && partnersCountOfPartner }"-->
             <CountOfPartners
                 type="modal"
                 title="Бесконечная"
@@ -115,13 +116,13 @@
                 v-if="infinityPartnersCount"
                 @open-modal="openMInfinityCell"
             />
-            <CountOfPartners
-                type="modal"
-                title="В ожидании"
-                :partners-count="partnersCountOfPartner"
-                v-if="partnersCountOfPartner > 0"
-                @open-modal="openMPartnerWaiting"
-            />
+<!--            <CountOfPartners-->
+<!--                type="modal"-->
+<!--                title="В ожидании"-->
+<!--                :partners-count="partnersCountOfPartner"-->
+<!--                v-if="partnersCountOfPartner > 0"-->
+<!--                @open-modal="openMPartnerWaiting"-->
+<!--            />-->
           </div>
         </div>
       </div>
