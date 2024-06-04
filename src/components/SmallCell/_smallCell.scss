@@ -87,6 +87,11 @@
   &.teleport .partner-type {
     display: none;
   }
+
+  &.skeleton-loader {
+    height: 215px;
+    border-radius: 16px;
+  }
 }
 
 

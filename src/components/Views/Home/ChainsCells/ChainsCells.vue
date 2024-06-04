@@ -10,6 +10,9 @@
       />
     </div>
     <div class="chains-cells__container">
+      <template v-if="showSkeletonLoader">
+        <SmallCell v-for="item in 6" :key="item"/>
+      </template>
       <ChainCell
           type="default"
           v-for="cell in chainsList?.list"
@@ -77,6 +80,7 @@ import {
 import { useStore } from "vuex";
 import ModalTeleportSettings from "@/components/Modals/ModalTeleportSettings/ModalTeleportSettings.vue";
 import { ListOfTypes } from "@/interfaces/store.interface.ts";
+import SmallCell from "@/components/SmallCell/SmallCell.vue";
 
 const store = useStore()
 
@@ -166,6 +170,10 @@ const setCheckboxValue = (value: boolean, id: number) => {
     }
   }
 }
+
+const showSkeletonLoader = computed(() =>
+    !chainsList.value?.list && littleTabID.value === 5 || !teleportList.value?.list && littleTabID.value === 6
+)
 
 onMounted(() => {
   // @ts-ignore

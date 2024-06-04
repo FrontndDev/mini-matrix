@@ -9,6 +9,9 @@
       />
     </div>
     <div class="boosters-cells__container">
+      <template v-if="showSkeletonLoader">
+        <SmallCell v-for="item in 6" :key="item"/>
+      </template>
       <SmallCell
           type="chains-boost"
           cell-type="chains-boost"
@@ -106,6 +109,10 @@ const data = reactive([
     value: computed(() => boostersExposed.value)
   },
 ])
+
+const showSkeletonLoader = computed(() =>
+    !boostersPending.value?.list && littleTabID.value === 3 || !boostersExposed.value?.list && littleTabID.value === 4
+)
 
 const openMMatrixPartner = (matrix: Matrix) => {
   emit('open-m-matrix-partner')

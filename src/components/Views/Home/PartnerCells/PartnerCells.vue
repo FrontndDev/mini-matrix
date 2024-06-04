@@ -9,6 +9,9 @@
       />
     </div>
     <div class="partners-cells__container">
+      <template v-if="showSkeletonLoader">
+        <SmallCell v-for="item in 6" :key="item"/>
+      </template>
       <SmallCell
           v-for="(cell, idx) in partnersPending?.list"
           :key="idx"
@@ -99,6 +102,9 @@ const data = reactive([
 ])
 
 const levelIDOfPartners = computed(() => store.state.partners.levelID)
+const showSkeletonLoader = computed(() =>
+    !partnersPending.value?.list && littleTabID.value === 1 || !partnersExposed.value?.list && littleTabID.value === 2
+)
 
 const selectPage = (page: number) => {
   store.commit('partners/SET_PAGE_ID_PARTNERS', page)
