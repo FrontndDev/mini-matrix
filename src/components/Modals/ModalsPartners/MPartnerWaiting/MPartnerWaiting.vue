@@ -102,18 +102,18 @@ const onlyInfinityCell: ComputedRef<boolean> = computed(() =>
 
 let selectedCell: Ref<Matrix | null> = ref(null)
 
-const selectedPage: ComputedRef<number> = computed(() => store.state.partners.pageIdPartners)
-
+const selectedPage = ref(1)
 
 const selectPage = (page: number) => {
   const isPartnerMatrix = !!route.query?.uuid
-  store.commit('partners/SET_PAGE_ID_PARTNERS', page)
+  selectedPage.value = page
   store.dispatch('partners/getPendingPartners', {
     isPartnerMatrix,
     ownerID: isPartnerMatrix && typeWaitingModal.value === 'view' ?
         selectedPartner.value.matrix?.owner.id :
         //@ts-ignore
-        window.UserData.id
+        window.UserData.id,
+    matrixFilterPageId: page,
   })
 }
 

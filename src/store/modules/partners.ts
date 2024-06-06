@@ -96,24 +96,21 @@ export default {
         matrixUUID,
         //@ts-ignore
         ownerID = window.UserData.id,
+        matrixFilterPageId = 1,
       }: IGetPendingBoostersParams
     ) {
       if (matrixType) {
         API.filterOfActivatedMatrix({
               matrixType,
-              matrixFilterPageId: 1,
+              matrixFilterPageId: matrixFilterPageId ?? 1,
               matrixFilterUserId: ownerID,
               filter: { pending: 1 },
               matrixUUID,
             }
         ).then(response => {
-          // Партнеры в ожидании Нашей матрицы
-          if (!isPartnerMatrix) {
-            commit('SET_PENDING_PARTNERS', response.data)
-            // Партнеры в ожидании Матрицы партнера
-          } else {
-            commit('SET_PENDING_PARTNERS_SECOND', response.data)
-          }
+          !isPartnerMatrix ?
+            commit('SET_PENDING_PARTNERS', response.data) : // Партнеры в ожидании Нашей матрицы
+            commit('SET_PENDING_PARTNERS_SECOND', response.data) // Партнеры в ожидании Матрицы партнера
         })
       }
     },
